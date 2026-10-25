@@ -56,13 +56,13 @@
         <div class="sidebar-menu-title">Components</div>
         <ul class="sidebar-menu-list">
           <li class="sidebar-menu-item">
-            <a href="tables-basic.html" class="sidebar-menu-link" id="menu-basictables" title="Data Barang">
+            <a href="{{ route('items.index') }}" class="sidebar-menu-link" id="menu-basictables" title="Data Barang">
               <i class="bi bi-table"></i>
               <span>Data Barang</span>
             </a>
           </li>
           <li class="sidebar-menu-item">
-            <a href="ui-forms.html" class="sidebar-menu-link" id="menu-uiforms" title="tambah Barang">
+            <a href="{{ route('items.create') }}" class="sidebar-menu-link" id="menu-uiforms" title="tambah Barang">
               <i class="bi bi-input-cursor-text"></i>
               <span>Tambah Barang</span>
             </a>
