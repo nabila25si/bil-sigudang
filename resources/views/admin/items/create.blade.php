@@ -1,131 +1,55 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tambah Barang - SiGudang</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+@extends('layouts.admin.app')
 
-    <style>
-        :root {
-            --hijau-tua: #0D3B2E;
-            --hijau: #22C55E;
-            --hijau-muda: #DCFCE7;
-            --latar: #F3F4F6;
-        }
-
-        body {
-            background-color: var(--latar);
-            color: var(--hijau-tua);
-        }
-
-        .navbar-sigudang {
-            background-color: var(--hijau-tua);
-        }
-
-        .navbar-brand {
-            color: white;
-            font-weight: 700;
-            font-size: 1.4rem;
-        }
-
-        .navbar-brand:hover {
-            color: var(--hijau-muda);
-        }
-
-        .page-title {
-            color: var(--hijau-tua);
-            font-weight: 700;
-        }
-
-        .form-card {
-            background-color: white;
-            border: none;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-        }
-
-        .form-label {
-            font-weight: 600;
-        }
-
-        .form-control {
-            padding: 10px 12px;
-            border-radius: 8px;
-        }
-
-        .form-control:focus {
-            border-color: var(--hijau);
-            box-shadow: 0 0 0 0.2rem rgba(34, 197, 94, 0.15);
-        }
-
-        .btn-sigudang {
-            background-color: var(--hijau-tua);
-            border-color: var(--hijau-tua);
-            color: white;
-        }
-
-        .btn-sigudang:hover {
-            background-color: #155640;
-            border-color: #155640;
-            color: white;
-        }
-    </style>
-</head>
-
-<body>
-
-<nav class="navbar navbar-sigudang px-4 py-3">
-    <a class="navbar-brand text-decoration-none"
-       href="{{ route('items.index') }}">SiGudang</a>
-</nav>
-
-<div class="container py-5">
-    <div class="mb-4">
-        <h2 class="page-title">Tambah Barang</h2>
-        <p class="text-secondary mb-0">
-            Isi formulir untuk menambahkan barang ke SiGudang.
-        </p>
+@section('content')
+{{-- start main content --}}
+<div class="page-header d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="page-title mb-1">Tambah Barang</h1>
+        <p class="page-subtitle text-muted mb-0">Isi formulir untuk menambahkan barang ke SiGudang.</p>
     </div>
+    <a href="{{ route('items.index') }}" class="btn btn-outline-secondary">
+        &larr; Kembali
+    </a>
+</div>
 
-    <div class="card form-card">
-        <div class="card-body p-4 p-md-5">
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body p-4">
+        <form action="{{ route('items.store') }}" method="POST">
+            @csrf
 
-            <form action="{{ route('items.store') }}" method="POST">
-                @csrf
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Kode Barang</label>
+                <input type="text" name="kode_barang"
+                       class="form-control @error('kode_barang') is-invalid @enderror"
+                       value="{{ old('kode_barang') }}" placeholder="Contoh: BRG-001" required>
+                @error('kode_barang')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Kode Barang</label>
-                    <input type="text" name="kode_barang"
-                           class="form-control @error('kode_barang') is-invalid @enderror"
-                           value="{{ old('kode_barang') }}" required>
-                    @error('kode_barang')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Nama Barang</label>
+                <input type="text" name="nama_barang"
+                       class="form-control @error('nama_barang') is-invalid @enderror"
+                       value="{{ old('nama_barang') }}" placeholder="Contoh: Kertas HVS A4" required>
+                @error('nama_barang')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Nama Barang</label>
-                    <input type="text" name="nama_barang"
-                           class="form-control @error('nama_barang') is-invalid @enderror"
-                           value="{{ old('nama_barang') }}" required>
-                    @error('nama_barang')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Kategori</label>
+                <input type="text" name="kategori"
+                       class="form-control @error('kategori') is-invalid @enderror"
+                       value="{{ old('kategori') }}" placeholder="Contoh: ATK" required>
+                @error('kategori')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Kategori</label>
-                    <input type="text" name="kategori"
-                           class="form-control @error('kategori') is-invalid @enderror"
-                           value="{{ old('kategori') }}" required>
-                    @error('kategori')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Stok</label>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Stok</label>
                     <input type="number" name="stok"
                            class="form-control @error('stok') is-invalid @enderror"
                            value="{{ old('stok', 0) }}" min="0" required>
@@ -134,48 +58,47 @@
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Satuan</label>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Satuan</label>
                     <input type="text" name="satuan"
                            class="form-control @error('satuan') is-invalid @enderror"
-                           value="{{ old('satuan') }}" required>
+                           value="{{ old('satuan') }}" placeholder="Contoh: Rim, Pcs, Box" required>
                     @error('satuan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Lokasi</label>
-                    <input type="text" name="lokasi"
-                           class="form-control @error('lokasi') is-invalid @enderror"
-                           value="{{ old('lokasi') }}">
-                    @error('lokasi')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Lokasi</label>
+                <input type="text" name="lokasi"
+                       class="form-control @error('lokasi') is-invalid @enderror"
+                       value="{{ old('lokasi') }}" placeholder="Contoh: Rak A-1">
+                @error('lokasi')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Deskripsi</label>
-                    <textarea name="deskripsi"
-                              class="form-control @error('deskripsi') is-invalid @enderror"
-                              rows="3">{{ old('deskripsi') }}</textarea>
-                    @error('deskripsi')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Deskripsi</label>
+                <textarea name="deskripsi"
+                          class="form-control @error('deskripsi') is-invalid @enderror"
+                          rows="3" placeholder="Deskripsi atau catatan barang...">{{ old('deskripsi') }}</textarea>
+                @error('deskripsi')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="d-flex justify-content-end gap-2 mt-4">
-                    <a href="{{ route('items.index') }}" class="btn btn-outline-secondary">
-                        Batal
-                    </a>
-                    <button type="submit" class="btn btn-sigudang">
-                        Simpan Barang
-                    </button>
-                </div>
-            </form>
-        </div>
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <a href="{{ route('items.index') }}" class="btn btn-outline-secondary">
+                    Batal
+                </a>
+                <button type="submit" class="btn btn-success" style="background-color: #0D3B2E; border-color: #0D3B2E;">
+                    Simpan Barang
+                </button>
+            </div>
+        </form>
     </div>
 </div>
-
-</body>
-</html>
+{{-- end main content --}}
+@endsection

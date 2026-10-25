@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
@@ -12,6 +13,8 @@ Route::view('/guest', 'guest.index')
     ->name('guest');
 
 Route::resource('items', ItemController::class);
+Route::resource('user', UserController::class);
+Route::resource('users', UserController::class);
 
 // Routes Pertemuan 5: Form Pertanyaan, Respon & Redirect with Flash Data
 Route::get('/question', [QuestionController::class, 'create'])
