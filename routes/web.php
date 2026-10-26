@@ -5,10 +5,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 
+//admin
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
 
+//guest
 Route::view('/guest', 'guest.index')
     ->name('guest');
 
@@ -25,3 +28,7 @@ Route::post('/question/store', [QuestionController::class, 'store'])
     ->name('question.store');
 Route::get('/question/respon', [QuestionController::class, 'respon'])
     ->name('question.respon');
+
+Route::get('/auth', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/auth', [AuthController::class, 'login'])->name('login.process');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');

@@ -14,7 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -44,52 +44,34 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0" id="home">
-            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0 d-flex align-items-center">
-                <img src="{{ asset('logosigudang.png') }}" alt="Logo SiGudang">
-                <h1 class="m-0">SiGudang</h1>
-                </a>
-                <button class="navbar-toggler rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto py-0">
-                        <a href="#home" class="nav-item nav-link active">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
-                        <a href="#overview" class="nav-item nav-link">Overview</a>
-                        <a href="#features" class="nav-item nav-link">Features</a> 
-                        <a href="#testimonial" class="nav-item nav-link">Testimonial</a>
-                        <a href="#contact" class="nav-item nav-link">Contact</a>
-                    </div>
-                    <a href="" class="btn btn-light rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Lihat Informasi</a>
-                </div>
-            </nav>
+            @include('layouts.guest.navbar')
+
 
             <div class="container-xxl hero-header">
                 <div class="container">
                     <div class="row g-5 align-items-center">
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="text-white mb-4 animated slideInDown">Sistem Pencatatan Stok Barang UMKM</h1>
-                            
+
                             <p class="text-white pb-3 animated slideInDown">
                                 Catat data barang, pantau jumlah stok, dan kelola persediaan
                                 UMKM dengan lebih mudah melalui SiGudang.
                             </p>
-                            
+
                             <div class="position-relative w-100 mt-3">
                                 <a href="#features" class="btn btn-primary rounded-pill py-3 px-4 shadow-none">
                                     Lihat Cara Kerja SiGudang
                                 </a>
                             </div>
 
-                            
+
                             </div>
                             <div class="col-lg-6 text-center">
                         <img class="img-fluid"
                              src="{{ asset('assets-guest/img/hero.jpg') }}"
                              alt="Ilustrasi SiGudang">
                         </div>
-                        
+
                         </div>
                     </div>
                 </div>
@@ -130,35 +112,35 @@
 
 
         <!-- About Start -->
-        
+
         <!-- About End -->
 
 
         <!-- Overview Start -->
-        
+
         <!-- Overview End -->
 
 
         <!-- Advanced Feature Start -->
-        
+
         <!-- Advanced Feature End -->
 
 
         <!-- Facts Start -->
-        
+
         <!-- Facts End -->
 
 
         <!-- Process Start -->
-        
+
         <!-- Process End -->
 
 
-        
+
 
 
         <!-- Testimonial Start -->
-        
+
         <!-- Testimonial End -->
         <!-- Contact Start -->
         <div class="container-xxl py-6" id="contact">
@@ -233,16 +215,10 @@
             </div>
         </div>
         <!-- Contact End -->
-        
+
 
         <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light footer py-3">
-            <div class="container text-center">
-                <p class="mb-0">
-                    &copy; 2026 SiGudang — Sistem Pencatatan Stok Barang UMKM.
-                </p>
-            </div>
-        </div>
+        @include('layouts.guest.footer')
         <!-- Footer End -->
 
 
