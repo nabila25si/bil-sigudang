@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\UserController;
@@ -13,7 +14,7 @@ Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 // guest
-Route::view('/guest', 'guest.index')
+Route::get('/guest', [GuestController::class, 'index'])
     ->name('guest');
 
 Route::resource('items', ItemController::class);

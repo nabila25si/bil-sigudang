@@ -9,10 +9,8 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto py-0">
                         <a href="#home" class="nav-item nav-link active">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
-                        <a href="#overview" class="nav-item nav-link">Overview</a>
+                        <a href="#katalog" class="nav-item nav-link">Katalog Barang</a>
                         <a href="#features" class="nav-item nav-link">Features</a>
-                        <a href="#testimonial" class="nav-item nav-link">Testimonial</a>
                         <a href="#contact" class="nav-item nav-link">Contact</a>
                     </div>
                     <a href="{{ route('login') }}" class="btn btn-light rounded-pill py-2 px-4 ms-3">Lihat Informasi
