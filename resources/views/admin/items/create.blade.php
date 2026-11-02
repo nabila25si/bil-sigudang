@@ -39,10 +39,15 @@
 
             <div class="mb-3">
                 <label class="form-label fw-semibold">Kategori</label>
-                <input type="text" name="kategori"
-                       class="form-control @error('kategori') is-invalid @enderror"
-                       value="{{ old('kategori') }}" placeholder="Contoh: ATK" required>
-                @error('kategori')
+                <select name="category_id" class="form-select @error('category_id') is-invalid @enderror" required>
+                    <option value="">-- Pilih Kategori --</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->nama_kategori }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('category_id')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>

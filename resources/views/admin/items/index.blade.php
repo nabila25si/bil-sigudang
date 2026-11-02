@@ -41,7 +41,11 @@
                             <tr>
                                 <td><span class="badge bg-light text-dark border">{{ $item->kode_barang }}</span></td>
                                 <td class="fw-semibold">{{ $item->nama_barang }}</td>
-                                <td>{{ $item->kategori }}</td>
+                                <td>
+                                    <span class="badge bg-light text-dark border">
+                                        {{ $item->category?->nama_kategori ?? $item->kategori ?? '-' }}
+                                    </span>
+                                </td>
                                 <td>{{ $item->stok }}</td>
                                 <td>{{ $item->satuan }}</td>
                                 <td>
