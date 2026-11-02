@@ -30,6 +30,12 @@
               <span>Data Barang</span>
             </a>
           </li>
+          <li class="sidebar-menu-item {{ request()->routeIs('categories.*') ? 'active' : '' }}">
+            <a href="{{ route('categories.index') }}" class="sidebar-menu-link {{ request()->routeIs('categories.*') ? 'active' : '' }}" id="menu-categories" title="Data Kategori">
+              <i class="bi bi-tags"></i>
+              <span>Data Kategori</span>
+            </a>
+          </li>
           <li class="sidebar-menu-item {{ request()->routeIs('items.create') ? 'active' : '' }}">
             <a href="{{ route('items.create') }}" class="sidebar-menu-link {{ request()->routeIs('items.create') ? 'active' : '' }}" id="menu-uiforms" title="Tambah Barang">
               <i class="bi bi-plus-circle"></i>
